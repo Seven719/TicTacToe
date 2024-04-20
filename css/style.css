@@ -1,3 +1,9 @@
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
+
 body {
     margin: 0px;
     padding: 0px;
@@ -34,10 +40,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     background-color: red;
-    width: 20vw;
-    height: 20vw;
+    height: var(--cell-size);
+    width: var(--cell-size);
     transition: all .25s;
 }
 
@@ -50,4 +57,67 @@ body {
         width: 150px;
         height: 150px;
     }
+}
+
+.cell.X::before,
+.cell.X::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.X::before {
+    transform: rotate(45deg);
+}
+
+
+.cell.X::after {
+    transform: rotate(-45deg);
+}
+
+
+.cell.O::before,
+.cell.O::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.O::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.O::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: red;
+}
+
+.win-message {
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.win-message > div {
+    font-size: 40px;
+}
+
+.win-message > * {
+    font-weight: 700;
+}
+
+#reset-button {
+    width: 100%;
+    height: 50px;
+    background: #232b2b;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    margin: 20px 0;
+    border: none;
+    outline: none;
 }
