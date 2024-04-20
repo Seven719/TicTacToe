@@ -64,9 +64,8 @@ const GameHandler = {
 }
 
 const GameFlow = (() => {
+    const cellElements = document.querySelectorAll('[data-cell]')
     const startGame = () => {
-        const cellElements = document.querySelectorAll('[data-cell]')
-
         cellElements.forEach(cell => {
             cell.classList.remove(Gameboard.markers.X, Gameboard.markers.O)
         })
@@ -82,7 +81,7 @@ const GameFlow = (() => {
     }
 
     const handleClick = (e) => {
-        GameHandler.handleClick(e, Gameboard.xturn, document.querySelector('[data-cell]'))
+        GameHandler.handleClick(e, Gameboard.xturn, cellElements)
     }
 
     startGame()
